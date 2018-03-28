@@ -1,14 +1,14 @@
 #!/bin/bash
 
 LOCKDIR=/tmp/cautious-tribble
-LOCKFILE=run-once.lock
+LOCKFILE=$LOCKDIR/run-once.lock
 
-if [ -f /tmp/cautious-tribble/run-once.lock ] ; then
+if [ -f $LOCKFILE ] ; then
   echo not running
   exit 0
 fi
 
 mkdir -p $LOCKDIR
-touch $LOCKDIR/$LOCKFILE
+touch $LOCKFILE
 
 echo running once
