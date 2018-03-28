@@ -3,10 +3,10 @@
 AGE=60
 
 LOCKDIR=/tmp/cautious-tribble
-LOCKFILE=run-hourly.lock
+LOCKFILE=$LOCKDIR/run-hourly.lock
 
-if [ -f $LOCKDIR/$LOCKFILE ]; then
-  execute=$(find $LOCKDIR/$LOCKFILE -not -mmin +$AGE -exec echo no \;)
+if [ -f $LOCKFILE ]; then
+  execute=$(find $LOCKFILE -not -mmin +$AGE -exec echo no \;)
 else
   execute=yes
 fi
@@ -17,6 +17,6 @@ if [ "$execute" == "no" ] ; then
 fi
 
 mkdir -p $LOCKDIR
-touch $LOCKDIR/$LOCKFILE
+touch $LOCKFILE
 
 echo running once after $AGE minutes
