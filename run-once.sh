@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LOCKDIR=/tmp/cautious-tribble
-LOCKFILE=$LOCKDIR/run-once.lock
+LOCKFILE=$LOCKDIR/cautious-tribble-once.lock
 
 if [ -f $LOCKFILE ] ; then
   echo not running
