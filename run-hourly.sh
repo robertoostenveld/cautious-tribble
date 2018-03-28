@@ -6,16 +6,17 @@ LOCKDIR=/tmp/cautious-tribble
 LOCKFILE=run-hourly.lock
 
 if [ -f $LOCKDIR/$LOCKFILE ]; then
-execute=$(find $LOCKDIR/$LOCKFILE -not -mmin +$AGE -exec echo no \;)
+  execute=$(find $LOCKDIR/$LOCKFILE -not -mmin +$AGE -exec echo no \;)
 else
-execute=yes
+  execute=yes
 fi
 
 if [ "$execute" == "no" ] ; then
+  echo not running
   exit 0
 fi
 
 mkdir -p $LOCKDIR
 touch $LOCKDIR/$LOCKFILE
 
-echo running again after $AGE minutes
+echo running once after $AGE minutes
