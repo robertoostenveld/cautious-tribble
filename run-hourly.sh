@@ -3,7 +3,7 @@
 AGE=60
 
 LOCKDIR=/tmp/cautious-tribble
-LOCKFILE=$LOCKDIR/run-hourly.lock
+LOCKFILE=$LOCKDIR/cautious-tribble-hourly.lock
 
 if [ -f $LOCKFILE ]; then
   execute=$(find $LOCKFILE -not -mmin +$AGE -exec echo no \;)
